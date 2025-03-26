@@ -15,4 +15,12 @@ class Article extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }}
+    }
+
+    // în modelul Article.php
+    public function scopePublic($query)
+    {
+        return $query->where('public', 1);
+    }
+
+}

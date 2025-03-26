@@ -10,3 +10,92 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* TD with data-label="Content" */
+td[data-label="Content"] {
+    max-width: 300px;
+    text-overflow: ellipsis;
+
+}
+@media (max-width: 768px) {
+    td[data-label="Content"] {
+        max-width: 100%;
+        text-overflow: ellipsis;
+
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: scroll;
+    }
+    
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 0 !important;
+        text-align: left;
+    }
+    
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    td {
+        display: -webkit-box !important;
+        max-width: 500px;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        padding-left: 100px !important;
+        min-height: 50px;
+
+    }
+
+    tbody {
+        width: fit-content;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+    }
+
+    td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        position: relative;
+        width: 500px;
+        align-items: center;
+    }
+
+    td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: capitalize;
+        min-width: 90px;
+
+        margin-right: 20px;
+        padding: 10px;
+        background: white;
+        background: white;
+        position: absolute;
+        left: 0;
+        height: 100%;
+    }
+}

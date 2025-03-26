@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
     Route::patch('/articles/{id}', [ArticleController::class, 'update'])->name('articles.update');
     Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+    Route::patch('/articles/{id}/public', [ArticleController::class, 'public'])->name('articles.public');
 });
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');

@@ -10,7 +10,7 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::public()->latest()->get();
         return view('articles.index', compact('articles'));
     }
 
@@ -24,9 +24,10 @@ class ArticleController extends Controller
         $article = new Article();
         $article->title = $request->input('title');
         $article->content = $request->input('content');
-        $article->user_id = auth()->id(); 
+        $article->public = $request->input('public', 0);
+        $article->user_id = auth()->id();
         $article->save();
-        return redirect()->route('articles.index');
+        return redirect()->route('dashboard');
     }
 
     public function show($id)
@@ -54,6 +55,14 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
         $article->delete();
+        return redirect()->route('articles.index');
+    }
+
+    public function public(Request $request, $id)
+    {
+        $article = Article::find($id);
+        $article->public = !$article->public;
+        $article->save();
         return redirect()->route('articles.index');
     }
 }

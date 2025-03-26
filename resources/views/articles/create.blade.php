@@ -15,6 +15,10 @@
                     <label for="content">{{ __('content') }}</label>
                     <textarea class="form-control" id="content" name="content" placeholder="Introduceți conținutul articolului"></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="public">Public</label>
+                    <input type="checkbox" class="form-control" id="public" name="public" value="1">
+                </div>
                 <button type="submit" class="btn btn-primary">Crează articolul</button>
             </form>
         </div>
